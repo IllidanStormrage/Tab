@@ -1,0 +1,19 @@
+
+<?
+    $kw = $_POST['kw'] ;
+        $res = DB::select('select * from `pages` WHERE title like ?$' ,[$kw]) ;
+        <?php foreach($res as $v): ?>
+            <div class="page-header">
+                <h2><a href="<?php echo e(URL('pages/'.$page->id)); ?>"><?php echo e($page->title); ?></a></h2>
+            </div>
+            <div class="panel">
+                <div class="panel-body"><pre><?php echo e($page->body); ?></pre></div>
+                <div class="panel-footer">
+
+                    <span>这里还没有足迹</span>
+                    创建于：<?php echo e($page->created_at); ?>		By <?php echo e($page->slug); ?>
+
+                </div>
+            </div>
+          <?php endforeach; ?>
+?>
